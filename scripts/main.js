@@ -75,7 +75,7 @@ function setupEventListeners() {
         }
     });
 
-    // Mouse Tracking (Parallax & Cursor)
+    // Mouse Tracking (Cursor)
     window.addEventListener('mousemove', (e) => {
         mouseX = e.clientX;
         mouseY = e.clientY;
@@ -83,20 +83,6 @@ function setupEventListeners() {
         if (state.currentView === 'jungle') {
             netCursor.style.left = mouseX + 'px';
             netCursor.style.top = mouseY + 'px';
-            
-            // Apply Parallax to Layers
-            const centerX = window.innerWidth / 2;
-            const centerY = window.innerHeight / 2;
-            const moveX = (mouseX - centerX);
-            const moveY = (mouseY - centerY);
-
-            layers.forEach(layer => {
-                const x = moveX * layer.speed;
-                const y = moveY * layer.speed;
-                if (layer.el) {
-                    layer.el.style.transform = `translate(${x}px, ${y}px)`;
-                }
-            });
         }
     });
 
@@ -122,6 +108,8 @@ function setupEventListeners() {
             audioManager.play('catch');
         }
     });
+
+    state.notify();
 }
 
 function syncJarFireflies() {
