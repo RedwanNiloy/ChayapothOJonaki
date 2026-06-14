@@ -23,6 +23,7 @@
             
             <div class="ui-overlay">
                 <button id="to-terrarium" class="nav-btn">Go to Terrarium</button>
+                <button id="to-car" class="nav-btn">Get Into Car</button>
                 <div class="counter">Fireflies Caught: <span id="caught-count">0</span></div>
             </div>
         </section>
@@ -41,7 +42,28 @@
                 </div>
             </div>
             <div class="ui-overlay">
-                <button id="to-jungle" class="nav-btn">Return to Jungle</button>
+                <button id="to-jungle-from-jar" class="nav-btn">Return to Jungle</button>
+            </div>
+        </section>
+
+        <!-- Car View -->
+        <section id="car-view" class="view hidden">
+            <div class="car-environment">
+                <div class="car-horizon-moon"></div>
+                <canvas id="car-canvas"></canvas>
+                <div class="vintage-car-container">
+                    <div class="vintage-car">
+                        <div class="car-top"></div>
+                        <div class="car-body"></div>
+                        <div class="car-lights">
+                            <div class="light left"></div>
+                            <div class="light right"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="ui-overlay">
+                <button id="exit-car" class="nav-btn">Exit Car</button>
             </div>
         </section>
 

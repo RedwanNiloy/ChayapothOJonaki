@@ -1,6 +1,6 @@
 export const state = {
     caughtFireflies: 0,
-    currentView: 'jungle', // 'jungle' or 'terrarium'
+    currentView: 'jungle', // 'jungle', 'terrarium', or 'car'
     
     // Listeners for state changes (simple pub/sub)
     listeners: [],
