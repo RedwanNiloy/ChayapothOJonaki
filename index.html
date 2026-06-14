@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chayapoth O Jonaki | Night Simulation</title>
+    <link rel="stylesheet" href="styles/main.css">
+</head>
+<body>
+    <div id="app">
+        <!-- Jungle View -->
+        <section id="jungle-view" class="view">
+            <div class="parallax-layer sky">
+                <div class="moon"></div>
+                <div class="stars-container"></div>
+            </div>
+            <div class="parallax-layer forest-back"></div>
+            <div class="parallax-layer forest-mid"></div>
+            <canvas id="firefly-canvas"></canvas>
+            <div class="parallax-layer forest-front"></div>
+            
+            <div class="ui-overlay">
+                <button id="to-terrarium" class="nav-btn">Go to Terrarium</button>
+                <div class="counter">Fireflies Caught: <span id="caught-count">0</span></div>
+            </div>
+        </section>
+
+        <!-- Terrarium View -->
+        <section id="terrarium-view" class="view hidden">
+            <div class="room-background">
+                <div class="window">
+                    <div class="night-sky-mini"></div>
+                </div>
+                <div class="table">
+                    <div class="jar-container">
+                        <canvas id="jar-canvas"></canvas>
+                        <div class="jar-glass"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="ui-overlay">
+                <button id="to-jungle" class="nav-btn">Return to Jungle</button>
+            </div>
+        </section>
+
+        <!-- Net Cursor -->
+        <div id="net-cursor"></div>
+    </div>
+
+    <script type="module" src="scripts/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,188 @@
+:root {
+    --night-bg: #050b18;
+    --moon-color: #f5f3ce;
+    --glow-color: rgba(255, 255, 100, 0.6);
+    --ui-text: #e0e0e0;
+}
+
+body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background-color: var(--night-bg);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+#app {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.view {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transition: opacity 0.8s ease-in-out;
+}
+
+.hidden {
+    opacity: 0;
+    pointer-events: none;
+    z-index: -1;
+}
+
+/* Jungle View Parallax */
+#jungle-view {
+    background: linear-gradient(to bottom, #02040a 0%, #050b18 100%);
+}
+
+.parallax-layer {
+    position: absolute;
+    width: 110%; /* Extra width for parallax movement */
+    height: 110%; /* Extra height for parallax movement */
+    left: -5%; /* Center the oversized layer */
+    top: -5%;
+    background-size: cover;
+    background-position: bottom center;
+    transition: transform 0.1s ease-out; /* Smooth movement */
+}
+
+.sky { z-index: 1; overflow: hidden; }
+
+/* Shooting Star Animation */
+.shooting-star {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 2px;
+    height: 2px;
+    background: #fff;
+    border-radius: 50%;
+    box-shadow: 0 0 5px 2px rgba(255, 255, 255, 0.4);
+    opacity: 0;
+    animation: shooting 3s linear infinite;
+}
+
+.shooting-star::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 100px;
+    height: 1px;
+    background: linear-gradient(90deg, #fff, transparent);
+}
+
+@keyframes shooting {
+    0% {
+        transform: rotate(-35deg) translateX(0);
+        opacity: 1;
+    }
+    70% {
+        opacity: 1;
+    }
+    100% {
+        transform: rotate(-35deg) translateX(-1000px);
+        opacity: 0;
+    }
+}
+.moon {
+    position: absolute;
+    top: 10%;
+    right: 15%;
+    width: 80px;
+    height: 80px;
+    background: var(--moon-color);
+    border-radius: 50%;
+    box-shadow: 0 0 40px var(--moon-color);
+}
+
+#firefly-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    cursor: none; /* We use the custom net cursor */
+}
+
+/* Terrarium View */
+#terrarium-view {
+    background: #1a1a2e;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.jar-container {
+    position: relative;
+    width: 300px;
+    height: 450px;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    border-radius: 40px 40px 10px 10px;
+    background: rgba(255, 255, 255, 0.05);
+    overflow: hidden;
+}
+
+.jar-glass {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, transparent 50%, rgba(255,255,255,0.05) 100%);
+    pointer-events: none;
+}
+
+#jar-canvas {
+    width: 100%;
+    height: 100%;
+}
+
+/* UI Elements */
+.ui-overlay {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.nav-btn {
+    padding: 10px 25px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: var(--ui-text);
+    cursor: pointer;
+    border-radius: 20px;
+    backdrop-filter: blur(5px);
+    transition: background 0.3s;
+}
+
+.nav-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.counter {
+    color: var(--ui-text);
+    font-size: 1.2rem;
+    text-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+
+/* Net Cursor */
+#net-cursor {
+    position: fixed;
+    width: 60px;
+    height: 60px;
+    border: 2px dashed rgba(255, 255, 255, 0.5);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 1000;
+    transform: translate(-50%, -50%);
+    display: none; /* Shown only in Jungle */
+}
